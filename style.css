@@ -1,127 +1,61 @@
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-}
-
+*{margin:0;padding:0;box-sizing:border-box;}
 body{
   font-family:'Newsreader', serif;
-  color:#ffffff;
+  color:#fff;
+  line-height:1.6;
   overflow-x:hidden;
-
-  /* Red ombré background */
-  background: linear-gradient(
-    to bottom,
-    #a70000,
-    #ff0000,
-    #ff5252,
-    #ff7b7b,
-    #ffbaba
-  );
-  background-attachment: fixed;
+  background:linear-gradient(to bottom,#a70000,#ff0000,#ff5252,#ff7b7b,#ffbaba);
+  background-attachment:fixed;
 }
 
 /* HERO */
-
-.hero{
-  height:100vh;
-  position:relative;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
-}
-
-.hero-bg{
-  position:absolute;
-  inset:0;
-  background:url('images/hero-bg.jpg') center/cover no-repeat;
-  z-index:1;
-}
-
-.hero::after{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:rgba(0,0,0,0.45);
-  z-index:2;
-}
-
-.hero-content{
-  position:relative;
-  z-index:3;
-}
-
-.hero h1{
-  font-size:4rem;
-  letter-spacing:1px;
-}
-
-.hero p{
-  color:#dddddd;
-  font-size:1.2rem;
-}
+.hero{height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;position:relative;}
+.hero-bg{position:absolute;inset:0;background:url('images/hero-bg.jpg') center/cover no-repeat;z-index:1;transition:transform .2s ease;}
+.hero::after{content:"";position:absolute;inset:0;background:rgba(0,0,0,0.45);z-index:2;}
+.hero-content{position:relative;z-index:3;}
+.hero h1{font-size:4rem;color:#fff;letter-spacing:1px;}
+.hero p{color:#ddd;font-size:1.2rem;}
 
 /* FEATURED */
-
-.featured-section{
-  padding:120px 10%;
-}
-
+.featured-section{padding:120px 10%;position:relative;}
 .featured-project{
   display:grid;
   grid-template-columns:1fr 1fr;
   gap:40px;
   margin-bottom:120px;
   align-items:center;
+  min-height:90vh;
+  position:relative;
+  z-index:1;
 }
+.featured-project:nth-child(even){direction:rtl;}
+.project-image img{width:100%;height:600px;object-fit:cover;transition:transform .8s ease;}
+.featured-project:hover img{transform:scale(1.04);}
+.project-text{direction:ltr;transition:transform .6s ease,opacity .6s ease;}
+.project-text span{font-size:0.9rem;letter-spacing:2px;color:#000;}
+.project-text h2{font-size:2.4rem;margin:10px 0;}
+.project-text p{color:#f0f0f0;}
+.featured-project.is-active{position:sticky;top:10vh;z-index:2;}
+.featured-project.is-active .project-text{opacity:1;transform:translateY(0);}
 
-.featured-project:nth-child(even){
-  direction:rtl;
-}
+/* GRID */
+.grid-section{padding:120px 10%;}
+.section-title{margin-bottom:40px;font-size:2rem;color:#000;}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:30px;}
+.grid-item{position:relative;overflow:hidden;cursor:pointer;}
+.grid-item img{width:100%;height:300px;object-fit:cover;transition:transform .6s ease;}
+.grid-item:hover img{transform:scale(1.1);}
+.overlay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.2rem;opacity:0;transition:.4s;background:rgba(0,0,0,0.5);}
+.grid-item:hover .overlay{opacity:1;}
 
-.project-image img{
-  width:100%;
-  height:600px;
-  object-fit:cover;
-  transition:transform .8s ease;
-}
-
-.featured-project:hover img{
-  transform:scale(1.04);
-}
-
-.project-text{
-  direction:ltr;
-}
-
-.project-text span{
-  font-size:0.9rem;
-  letter-spacing:2px;
-  color:#000000;
-}
-
-.project-text h2{
-  font-size:2.4rem;
-  margin:10px 0;
-}
-
-.project-text p{
-  color:#f0f0f0;
-}
+/* LIGHTBOX */
+.lightbox{position:fixed;inset:0;background:rgba(0,0,0,0.9);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:.4s;z-index:999;}
+.lightbox img{max-width:90%;max-height:90%;}
+.lightbox.active{opacity:1;pointer-events:auto;}
 
 /* RESPONSIVE */
-
 @media(max-width:900px){
-  .featured-project{
-    grid-template-columns:1fr;
-  }
-
-  .project-image img{
-    height:400px;
-  }
-
-  .hero h1{
-    font-size:2.5rem;
-  }
+  .featured-project{grid-template-columns:1fr;}
+  .project-image img{height:400px;}
+  .hero h1{font-size:2.5rem;}
 }

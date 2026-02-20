@@ -7,10 +7,9 @@
 body{
   font-family:'Newsreader', serif;
   color:#ffffff;
-  line-height:1.6;
   overflow-x:hidden;
 
-  /* Red Ombré Background */
+  /* Red ombré background */
   background: linear-gradient(
     to bottom,
     #a70000,
@@ -36,9 +35,8 @@ body{
 .hero-bg{
   position:absolute;
   inset:0;
-  background:url('images/hero.jpg') center/cover no-repeat;
+  background:url('images/hero-bg.jpg') center/cover no-repeat;
   z-index:1;
-  transform:translateZ(0);
 }
 
 .hero::after{
@@ -56,12 +54,11 @@ body{
 
 .hero h1{
   font-size:4rem;
-  color:#ffffff;
   letter-spacing:1px;
 }
 
 .hero p{
-  color:#cccccc;
+  color:#dddddd;
   font-size:1.2rem;
 }
 
@@ -74,6 +71,7 @@ body{
 .featured-project{
   display:grid;
   grid-template-columns:1fr 1fr;
+  gap:40px;
   margin-bottom:120px;
   align-items:center;
 }
@@ -90,105 +88,26 @@ body{
 }
 
 .featured-project:hover img{
-  transform:scale(1.05);
+  transform:scale(1.04);
 }
 
 .project-text{
-  padding:40px;
   direction:ltr;
 }
 
 .project-text span{
-  color:#000000;
   font-size:0.9rem;
   letter-spacing:2px;
+  color:#000000;
 }
 
 .project-text h2{
-  font-size:2.5rem;
+  font-size:2.4rem;
   margin:10px 0;
-  color:#ffffff;
 }
 
 .project-text p{
-  color:#eeeeee;
-}
-
-/* GRID */
-
-.grid-section{
-  padding:120px 10%;
-}
-
-.section-title{
-  margin-bottom:40px;
-  font-size:2rem;
-  color:#000000;
-}
-
-.grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-  gap:30px;
-}
-
-.grid-item{
-  position:relative;
-  overflow:hidden;
-  cursor:pointer;
-}
-
-.grid-item img{
-  width:100%;
-  height:300px;
-  object-fit:cover;
-  transition:transform .6s ease;
-}
-
-.grid-item:hover img{
-  transform:scale(1.1);
-}
-
-.overlay{
-  position:absolute;
-  inset:0;
-  background:rgba(0,0,0,0.5);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  color:#ffffff;
-  font-size:1.2rem;
-  opacity:0;
-  transition:.4s;
-}
-
-.grid-item:hover .overlay{
-  opacity:1;
-}
-
-/* LIGHTBOX */
-
-.lightbox{
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,0.9);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  opacity:0;
-  pointer-events:none;
-  transition:.4s;
-  z-index:999;
-}
-
-.lightbox img{
-  max-width:90%;
-  max-height:90%;
-}
-
-.lightbox.active{
-  opacity:1;
-  pointer-events:auto;
+  color:#f0f0f0;
 }
 
 /* RESPONSIVE */

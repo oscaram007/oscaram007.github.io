@@ -1,19 +1,16 @@
-// Scroll reveal for sections
+// Scroll reveal sections
 const sections = document.querySelectorAll('section');
 const reveal = new IntersectionObserver((entries)=>{
   entries.forEach(entry=>{
     if(entry.isIntersecting) entry.target.classList.add('show');
   });
 },{ threshold:0.15 });
-
 sections.forEach(sec => { sec.classList.add('hidden'); reveal.observe(sec); });
 
-// Smooth scroll: scroll-down arrow
+// Smooth scroll: scroll-down & navbar
 document.querySelector('.scroll-down')?.addEventListener('click',()=>{
   document.querySelector('#featured').scrollIntoView({ behavior:'smooth' });
 });
-
-// Smooth scroll: navbar links
 document.querySelectorAll('.nav a').forEach(link=>{
   link.addEventListener('click', e=>{
     e.preventDefault();
@@ -21,7 +18,7 @@ document.querySelectorAll('.nav a').forEach(link=>{
   });
 });
 
-// Lightbox modal functionality
+// Lightbox modal
 const lightbox = document.getElementById('lightbox');
 const lightboxImg = document.querySelector('.lightbox-img');
 const lightboxTitle = document.getElementById('lightbox-title');
@@ -41,16 +38,27 @@ document.querySelectorAll('.project').forEach(project=>{
 closeBtn.addEventListener('click',()=>{ lightbox.style.display='none'; });
 lightbox.addEventListener('click',e=>{ if(e.target===lightbox) lightbox.style.display='none'; });
 
-// Parallax effect for project images
-const projectImages = document.querySelectorAll('.project img');
-window.addEventListener('scroll',()=>{
-  const scrollTop = window.scrollY;
-  projectImages.forEach(img=>{
-    const offset = img.parentElement.offsetTop;
-    const height = img.parentElement.offsetHeight;
-    if(scrollTop + window.innerHeight > offset && scrollTop < offset + height){
-      img.style.transform = `translateY(${(scrollTop - offset) * 0.3}px) scale(1.05)`;
-    }
+// GSAP + ScrollTrigger Cinematic Animations
+gsap.registerPlugin(ScrollTrigger);
+
+// Hero fade-up
+gsap.from("#hero .hero-content h1", { y:100, opacity:0, duration:1.5, scrollTrigger:{ trigger:"#hero", start:"top top", end:"bottom top", scrub:true } });
+gsap.from("#hero .hero-content p", { y:50, opacity:0, duration:1.2, scrollTrigger:{ trigger:"#hero", start:"top top", end:"bottom top", scrub:true } });
+
+// Project pinning + fade
+gsap.utils.toArray(".projects .project").forEach((project) => {
+  ScrollTrigger.create({
+    trigger: project,
+    start: "top 80%",
+    end: "bottom 20%",
+    pin: true,
+    pinSpacing: false,
+    scrub: true
   });
+  gsap.from(project, { opacity:0, y:100, duration:1, scrollTrigger:{ trigger:project, start:"top 80%", end:"bottom 60%", scrub:true } });
 });
 
+// Parallax subtle images
+gsap.utils.toArray(".project img").forEach(img=>{
+  gsap.to(img, { y:-50, ease:"none", scrollTrigger:{ trigger: img.parentElement, start:"top bottom", end:"bottom top", scrub:true } });
+});

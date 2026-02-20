@@ -1,1 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Oscar’s Portfolio</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
+  <!-- Fixed Navbar -->
+  <nav class="nav">
+    <ul>
+      <li><a href="#featured">Works</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero Section -->
+  <section id="hero">
+    <div class="hero-content">
+      <h1>OSCAR</h1>
+      <p>CREATIVE DEVELOPER & DESIGNER</p>
+      <div class="scroll-down">↓ SCROLL</div>
+    </div>
+  </section>
+
+  <!-- Featured Projects -->
+  <section id="featured">
+    <h2 class="section-title">FEATURED WORK</h2>
+    <div class="projects">
+
+      <div class="project">
+        <img src="images/project1.jpg" alt="Project 1">
+        <div class="project-info">
+          <h3>Project One</h3>
+          <p>Web Design • 2026</p>
+        </div>
+      </div>
+
+      <div class="project">
+        <img src="images/project2.jpg" alt="Project 2">
+        <div class="project-info">
+          <h3>Project Two</h3>
+          <p>Branding • 2025</p>
+        </div>
+      </div>
+
+      <div class="project">
+        <img src="images/project3.jpg" alt="Project 3">
+        <div class="project-info">
+          <h3>Project Three</h3>
+          <p>UI/UX • 2024</p>
+        </div>
+      </div>
+
+      <!-- Add more projects as needed -->
+
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about">
+    <h2 class="section-title">ABOUT ME</h2>
+    <p>I am a passionate designer and developer with experience in web, branding, and visual creation. I focus on crafting immersive experiences with clean, minimal design and smooth interactions.</p>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact">
+    <h2 class="section-title">CONTACT</h2>
+    <p>Reach me at <a href="mailto:oscar@example.com">oscar@example.com</a></p>
+  </section>
+
+  <!-- Lightbox Modal -->
+  <div id="lightbox" class="lightbox">
+    <span class="close">&times;</span>
+    <img class="lightbox-img" src="" alt="Project Image">
+    <div class="lightbox-info">
+      <h3 id="lightbox-title">Title</h3>
+      <p id="lightbox-category">Category • Year</p>
+      <p id="lightbox-desc">Project description goes here.</p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
